@@ -94,11 +94,14 @@
 #pragma mark -
 #pragma mark NSURLConnection methods
 
-- (void)connection:(NSURLConnection *)aConnection didReceiveResponse:(NSURLResponse *)aResponse
+- (void)connection:(NSURLConnection *)aConnection didReceiveResponse:(NSHTTPURLResponse *)aResponse
 {
-	if (response)
+	if (response != aResponse)
+	{
 		[response release];
-	response = [aResponse retain];
+		response = [aResponse retain];
+	}
+
 	[responseData setLength:0];
 }
 
