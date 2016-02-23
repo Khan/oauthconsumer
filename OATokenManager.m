@@ -12,6 +12,8 @@
 #import "OACall.h"
 #import "OATokenManager.h"
 
+@import UIKit;
+
 @interface OATokenManager (Private)
 
 - (void)callProblem:(OACall *)call problem:(OAProblem *)problem;
