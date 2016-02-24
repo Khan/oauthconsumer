@@ -253,11 +253,13 @@
 		reqToken = [token retain];
 	
 		[reqToken storeInUserDefaultsWithServiceProviderName:oauthBase prefix:[@"request:" stringByAppendingString:realm]];
+		#if !TARGET_OS_TV
 		/* Save the token in case we exit and start again
 		 before the token is authorized (useful for iPhone) */
 		NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@authorize?oauth_token=%@&oauth_callback=%@",
 										   oauthBase, token.key, callback]];
 		[[UIApplication sharedApplication] openURL:url];
+		#endif
 
 	}
 	[call release];
