@@ -32,6 +32,7 @@
 #import "NSMutableURLRequest+Parameters.h"
 #import "NSURL+Base.h"
 
+NS_ASSUME_NONNULL_BEGIN
 
 @interface OAMutableURLRequest : NSMutableURLRequest {
 @protected
@@ -43,23 +44,25 @@
     NSString *nonce;
     NSString *timestamp;
 }
-@property(readonly) NSString *signature;
-@property(readonly) NSString *nonce;
+@property(readonly) NSString * _Nullable signature;
+@property(readonly) NSString * _Nullable nonce;
 
 - (id)initWithURL:(NSURL *)aUrl
 		 consumer:(OAConsumer *)aConsumer
-			token:(OAToken *)aToken
-            realm:(NSString *)aRealm
-signatureProvider:(id<OASignatureProviding>)aProvider;
+			token:(OAToken * _Nullable)aToken
+            realm:(NSString * _Nullable)aRealm
+signatureProvider:(id<OASignatureProviding> _Nullable)aProvider;
 
 - (id)initWithURL:(NSURL *)aUrl
 		 consumer:(OAConsumer *)aConsumer
-			token:(OAToken *)aToken
-            realm:(NSString *)aRealm
-signatureProvider:(id<OASignatureProviding>)aProvider
+			token:(OAToken * _Nullable)aToken
+            realm:(NSString * _Nullable)aRealm
+signatureProvider:(id<OASignatureProviding> _Nullable)aProvider
             nonce:(NSString *)aNonce
         timestamp:(NSString *)aTimestamp;
 
 - (void)prepare;
 
 @end
+
+NS_ASSUME_NONNULL_END
